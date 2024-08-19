@@ -1,11 +1,13 @@
 import React from 'react';
 
+type Props = {
+  items: string[]
+};
 
-const Todos = () => {
+const Todos = (props: Props) => {
   return (
     <ul>
-      <li>Learn React</li>
-      <li>Learn Typescript</li>
+      {props.items.map(item => <li key={item}>{item}</li>)}
     </ul>
   );
 };
