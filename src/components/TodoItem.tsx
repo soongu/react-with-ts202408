@@ -2,11 +2,18 @@ import React from 'react';
 import styles from './TodoItem.module.css';
 
 type Props = {
-  text: string;
+  id: string,
+  text: string,
+  onRemove: (id: string) => void
 };
 
-const TodoItem = ({ text }: Props) => {
-  return <li className={styles.item}>{text}</li>;
+const TodoItem = ({ id, text, onRemove }: Props) => {
+
+  const onRemoveTodo = () => {
+    onRemove(id);
+  };
+
+  return <li className={styles.item} onClick={onRemoveTodo}>{text}</li>;
 };
 
 export default TodoItem;
