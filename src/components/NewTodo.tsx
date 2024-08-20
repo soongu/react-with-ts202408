@@ -1,6 +1,10 @@
-import React, { useRef, useContext } from 'react';
+import React, { useRef } from 'react';
 import styles from './NewTodo.module.css';
-import TodoContext from '../context/todo-context';
+import { useDispatch } from 'react-redux';
+// import TodoContext from '../context/todo-context';
+import { AppDispatch } from '../store';
+import { addTodo } from '../store/todo-slice';
+
 
 // type Props = {
 //   onAddTodo: (todoText: string) => void
@@ -8,7 +12,8 @@ import TodoContext from '../context/todo-context';
 
 const NewTodo = () => {
 
-  const { addTodo } = useContext(TodoContext);
+  // const { addTodo } = useContext(TodoContext);
+  const dispatch: AppDispatch = useDispatch();
 
   const todoRef = useRef<HTMLInputElement>(null);
 
@@ -23,7 +28,8 @@ const NewTodo = () => {
       return;
     }
 
-    addTodo(enteredText);
+    // addTodo(enteredText);
+    dispatch(addTodo(enteredText));
   };
 
   return (

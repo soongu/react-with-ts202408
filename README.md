@@ -104,3 +104,8 @@ TypeScript 설정을 수정하고 싶다면, `tsconfig.json` 파일을 열어 �
 }
 ```
 
+### **5. 리덕스 설치 **
+```shell
+npm install @reduxjs/toolkit react-redux
+npm install @types/react-redux
+```
