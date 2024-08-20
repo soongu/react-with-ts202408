@@ -1,11 +1,14 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 import styles from './NewTodo.module.css';
+import TodoContext from '../context/todo-context';
 
-type Props = {
-  onAddTodo: (todoText: string) => void
-};
+// type Props = {
+//   onAddTodo: (todoText: string) => void
+// };
 
-const NewTodo = ({ onAddTodo }: Props) => {
+const NewTodo = () => {
+
+  const { addTodo } = useContext(TodoContext);
 
   const todoRef = useRef<HTMLInputElement>(null);
 
@@ -20,7 +23,7 @@ const NewTodo = ({ onAddTodo }: Props) => {
       return;
     }
 
-    onAddTodo(enteredText);
+    addTodo(enteredText);
   };
 
   return (

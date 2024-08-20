@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Todo from '../models/todo';
 import TodoItem from './TodoItem';
 import styles from './Todos.module.css';
+import TodoContext from '../context/todo-context';
 
-type Props = {
-  items: Todo[],
-  onRemove: (id: string) => void
-};
+// type Props = {
+//   items: Todo[],
+//   onRemove: (id: string) => void
+// };
 
-const Todos = (props: Props) => {
+const Todos = () => {
+
+  const { items } = useContext(TodoContext);
+
   return (
     <ul className={styles.todos}>
-      {props.items.map((item) => (
+      {items.map((item) => (
         <TodoItem
           key={item.id}
           id={item.id}
           text={item.text}
-          onRemove={props.onRemove}
         />
       ))}
     </ul>
