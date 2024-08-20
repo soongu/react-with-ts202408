@@ -1,9 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface Todo {
-  id: string;
-  text: string;
-}
+import Todo from '../models/todo';
 
 interface TodosState {
   items: Todo[];
@@ -17,14 +13,11 @@ const todoSlice = createSlice({
   name: 'todos',
   initialState,
   reducers: {
-    addTodo: (state: TodosState, action: PayloadAction<string>) => {
-      const newTodo: Todo = {
-        id: new Date().toISOString(),
-        text: action.payload,
-      };
+    addTodo: (state, action: PayloadAction<string>) => {
+      const newTodo: Todo = new Todo(action.payload);
       state.items.push(newTodo);
     },
-    removeTodo: (state: TodosState, action: PayloadAction<string>) => {
+    removeTodo: (state, action: PayloadAction<string>) => {
       state.items = state.items.filter(todo => todo.id !== action.payload);
     },
   },
